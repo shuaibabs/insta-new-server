@@ -1,18 +1,18 @@
 const express = require('express');
+require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 let Cred = require('./cred.model');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-const uri = "mongodb+srv://mhshuaibabbasi:4AXOBiZjUQ7pInsc@cluster0.q6nznmw.mongodb.net/";
-mongoose.connect(uri, ) //{useUnifiedTopology: true, useNewUrlParser: true}
+mongoose.connect(process.env.DATABASE, ) //{useUnifiedTopology: true, useNewUrlParser: true}
 const connection = mongoose.connection;
 
 connection.once('open', function() {
